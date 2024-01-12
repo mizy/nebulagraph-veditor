@@ -158,7 +158,10 @@ class Graph extends Utils.Event {
 
 
   initDefs() {
-    if(document.getElementById("ve-svg-defs")) return;
+    if (document.getElementById("ve-svg-defs")) {
+      this.shadow = document.getElementById("ve-svg-defs") as unknown as SVGSVGElement;
+      return;
+    };
     this.shadow = svgWrapper(
       `<svg id="ve-svg-defs" style="position:absolute;left:-9999px;top:-9999px;" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -193,6 +196,8 @@ class Graph extends Utils.Event {
   destroy() {
     this.clearGraph();
     this.clear();
+    this.shadow.remove();
+    this.shadow = undefined;
     document.removeEventListener("keydown", this.onKeyDown);
   }
 }
