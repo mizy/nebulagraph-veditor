@@ -591,6 +591,7 @@ class Line {
     for (let key in lines) {
       this.deleteLine(lines[key].data, true);
     }
+    this.activeLine = null;
   }
 }
 export default Line;

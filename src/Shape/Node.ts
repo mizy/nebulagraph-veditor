@@ -469,6 +469,7 @@ class Node {
     for (let key in nodes) {
       this.deleteNode(nodes[key].data, true);
     }
+    this.actives = {};
   }
 }
 export default Node;
