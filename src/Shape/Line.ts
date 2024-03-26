@@ -246,6 +246,7 @@ class Line {
     line.arrow.remove();
     line.arrow = null;
     line.dom.remove();
+    line.label = null;
     this.activeLine = null;
   }
 

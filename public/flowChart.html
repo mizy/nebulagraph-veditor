@@ -2,6 +2,7 @@
 
 <body>
   <div id="app" style="width:100%;height:300px;box-shadow:  0 0 10px 1px #123"></div>
+  <button onclick="onChangeLayoutSort()">sort</button>
 </body>
 <script src="../dist/VEditor.browser.js"></script>
 <script>
@@ -88,6 +89,7 @@
   // dagre配置
   editor.config.dagreOption = {
     rankdir: 'TB',
+    ranksep: 150
   }
   // async
   async function setData() {
@@ -97,6 +99,24 @@
     editor.controller.autoFit();
   }
   setData();
+
+
+  const onChangeLayoutSort = async () => {
+    editor.config.dagreOption = {
+      // ...editor.config.dagreOption,
+      rankdir: editor.config.dagreOption?.rankdir === "TB" ? "BT" : "TB",
+      ranksep: 150,
+    };
+    const isRevert = editor.config.dagreOption?.rankdir === "TB";
+    for (const key in editor.graph.line.lines) {
+      const line = editor.graph.line.lines[key];
+      line.data.fromPoint = isRevert ? 3 : 2;
+      line.data.toPoint = isRevert ? 2 : 3;
+    }
+    editor.schema.format();
+    editor.controller.autoFit();
+  };
+
 
 </script>
 

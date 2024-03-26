@@ -255,7 +255,7 @@ const DefaultLine: LineRender = {
       );
     }
     line.shape.appendChild(line.label.labelGroup);
-    const { text, textRect, textBBox, oldText, labelGroup } = line.label;
+    const { text, textBBox, oldText, labelGroup } = line.label;
     const x = xPoint + (refX || 0);
     const y = yPoint + (refY || 0);
     text.textContent = label;
